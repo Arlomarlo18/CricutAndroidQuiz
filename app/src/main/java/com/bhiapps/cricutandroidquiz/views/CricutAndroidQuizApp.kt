@@ -10,6 +10,6 @@ fun CricutAndroidQuizApp(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
-        
+
     }
 }
