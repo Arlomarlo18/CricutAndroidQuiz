@@ -24,6 +24,7 @@ fun GameOverView(
 ) {
 
     val highScore by quizVM.highScore.collectAsState()
+    val currentScore by quizVM.currentScore.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -41,8 +42,19 @@ fun GameOverView(
             )
         )
 
+        AutoResizedText(
+            modifier = Modifier,
+            text = "Current Score: $currentScore",
+            softWrap = false,
+            style = TextStyle(
+                textAlign = TextAlign.Center,
+                fontSize = 32.sp
+            )
+        )
+
         Button(
             onClick = {
+                quizVM.resetGame()
                 viewStateVM.setViewState(ViewState.START_GAME)
             }
         ) {

@@ -45,11 +45,11 @@ class QuizViewModel(
     }
 
     // User Intents
-    fun addPoint() {
+    private fun addPoint() {
         _currentScore.value += 1
     }
 
-    fun minusPoint() {
+    private fun minusPoint() {
         _currentScore.value -= 1
     }
 
@@ -66,8 +66,6 @@ class QuizViewModel(
             changeViewState()
             setQuestions()
             updateHighScore(_currentScore.value)
-            _currentScore.value = 0
-            _currentQuestionIndex.value = 0
         }
     }
 
@@ -79,7 +77,7 @@ class QuizViewModel(
             }
             is Question.MultipleChoice -> {
                 val question = questions[_currentQuestionIndex.value] as Question.MultipleChoice
-                if (_selectedMultipleChoiceAnswers.value.containsAll(question.answer)) addPoint() else minusPoint()
+                if (_selectedMultipleChoiceAnswers.value.toSet() == question.answer.toSet()) addPoint() else minusPoint()
             }
             is Question.SingleChoice -> {
                 val question = questions[_currentQuestionIndex.value] as Question.SingleChoice
@@ -154,5 +152,10 @@ class QuizViewModel(
                 _highScore.value = highScore
             }
         }
+    }
+
+    fun resetGame() {
+        _currentScore.value = 0
+        _currentQuestionIndex.value = 0
     }
 }
