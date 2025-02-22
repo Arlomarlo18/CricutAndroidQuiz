@@ -13,6 +13,4 @@ class ViewStateViewModel: ViewModel() {
     fun setViewState(viewState: ViewState) {
         _viewState.value = viewState
     }
-
-
 }

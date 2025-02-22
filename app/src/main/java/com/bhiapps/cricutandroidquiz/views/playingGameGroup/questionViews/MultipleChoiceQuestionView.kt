@@ -23,7 +23,7 @@ import com.bhiapps.cricutandroidquiz.views.subviews.AutoResizedText
 @Composable
 fun MultipleChoiceQuestionView(
     question: Question.MultipleChoice,
-    selectedAnswers: MutableList<String>,
+    selectedAnswers: List<String>,
     onAnswerSelected: (String) -> Unit,
     onAnswerRemoved: (String) -> Unit
 ) {

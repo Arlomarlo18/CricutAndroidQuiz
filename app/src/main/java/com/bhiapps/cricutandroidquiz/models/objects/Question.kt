@@ -37,7 +37,7 @@ fun loadQuestions(): List<Question> {
             answer = "Heap"
         ),
         Question.BooleanChoice(
-            question = "Composable are views in Jetpack Compose.",
+            question = "Composables are a View in Jetpack Compose.",
             answer = true
         ),
         Question.FillInTheBlank(
