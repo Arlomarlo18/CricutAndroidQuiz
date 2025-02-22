@@ -13,19 +13,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.isUnspecified
 
-
-/**
- * A Jetpack Compose composable that automatically resizes text to fit within its bounds.
- *
- * This ensures that text does not overflow its container by dynamically adjusting
- * the font size while maintaining readability.
- *
- * @param modifier The modifier to apply to this layout.
- * @param text The text to be displayed.
- * @param style The text style (font size, weight, etc.), defaults to `headlineLarge` from MaterialTheme.
- * @param softWrap Whether the text should wrap when it overflows its container, defaults to `false`.
- * @param color The color of the text. Defaults to `Color.Unspecified`, which uses the theme's default text color.
- */
 @Composable
 fun AutoResizedText(
     modifier: Modifier = Modifier,
