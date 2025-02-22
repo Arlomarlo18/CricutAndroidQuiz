@@ -36,6 +36,7 @@ fun PlayingGameView(
     val multipleChoiceAnswers by quizVM.selectedMultipleChoiceAnswers.collectAsState()
     val singleChoiceAnswers by quizVM.selectedSingleChoiceAnswer.collectAsState()
     val fillInTheBlankAnswer by quizVM.fillInTheBlankAnswer.collectAsState()
+    val currentScore by quizVM.currentScore.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -45,6 +46,16 @@ fun PlayingGameView(
         AutoResizedText(
             modifier = Modifier,
             text = "Playing Game",
+            softWrap = false,
+            style = TextStyle(
+                textAlign = TextAlign.Center,
+                fontSize = 32.sp
+            )
+        )
+
+        AutoResizedText(
+            modifier = Modifier,
+            text = currentScore.toString(),
             softWrap = false,
             style = TextStyle(
                 textAlign = TextAlign.Center,

@@ -1,5 +1,6 @@
 package com.bhiapps.cricutandroidquiz.viewModel.quizViewModelGroup
 
+import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.bhiapps.cricutandroidquiz.models.objects.Question
@@ -9,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class QuizViewModel(
     private val dataStoreManager: DataStoreManager
@@ -53,16 +55,40 @@ class QuizViewModel(
 
     fun nextQuestion(changeViewState: () -> Unit) {
         if (_currentQuestionIndex.value < questions.size - 1 ) {
-            // Todo: Add logic to check if the answer is correct
+            answerQuestion()
             resetFillInTheBlankAnswer()
             resetSingleChoiceAnswer()
             resetMultipleChoiceAnswer()
             resetBooleanAnswer()
             _currentQuestionIndex.value += 1
         } else {
+            answerQuestion()
             changeViewState()
             setQuestions()
+            updateHighScore(_currentScore.value)
+            _currentScore.value = 0
             _currentQuestionIndex.value = 0
+        }
+    }
+
+    private fun answerQuestion() {
+        when (questions[_currentQuestionIndex.value]) {
+            is Question.BooleanChoice -> {
+                val question = questions[_currentQuestionIndex.value] as Question.BooleanChoice
+                if (question.answer == _selectedBooleanAnswer.value) addPoint() else minusPoint()
+            }
+            is Question.MultipleChoice -> {
+                val question = questions[_currentQuestionIndex.value] as Question.MultipleChoice
+                if (_selectedMultipleChoiceAnswers.value.containsAll(question.answer)) addPoint() else minusPoint()
+            }
+            is Question.SingleChoice -> {
+                val question = questions[_currentQuestionIndex.value] as Question.SingleChoice
+                if (question.answer == _selectedSingleChoiceAnswer.value) addPoint() else minusPoint()
+            }
+            is Question.FillInTheBlank -> {
+                val question = questions[_currentQuestionIndex.value] as Question.FillInTheBlank
+                if (question.answer.lowercase(Locale.ROOT) == _fillInTheBlankAnswer.value.lowercase(Locale.ROOT)) addPoint() else minusPoint()
+            }
         }
     }
 

@@ -28,12 +28,12 @@ fun loadQuestions(): List<Question> {
     return listOf(
         Question.MultipleChoice(
             question = "Which functions are part of the Activity Lifecycle?",
-            options = listOf("onCreate", "onStartAgain", "onPause", "onDelete"),
+            options = listOf("onCreate", "onStartAgain", "onPause", "onDelete").shuffled(),
             answer = listOf("onCreate","onPause")
         ),
         Question.SingleChoice(
             question = "Where are classes stored in Android?",
-            options = listOf("Heap", "Stack", "Ram", "On the disk"),
+            options = listOf("Heap", "Stack", "Ram", "On the disk").shuffled(),
             answer = "Heap"
         ),
         Question.BooleanChoice(
@@ -46,12 +46,12 @@ fun loadQuestions(): List<Question> {
         ),
         Question.MultipleChoice(
             question = "What does configuration change mean?",
-            options = listOf("Changing the device's language", "Turning on the Camera", "Changing the device's orientation", "All of the above"),
+            options = listOf("Changing the device's language", "Turning on the Camera", "Changing the device's orientation", "All of the above").shuffled(),
             answer = listOf("Changing the device's language", "Changing the device's orientation")
         ),
         Question.SingleChoice(
             question = "What does the acronym MVVM stand for?",
-            options = listOf("Model View ViewModel", "Money Victory ViewModel", "Manager Views Views Manager", "Model View ViewManager"),
+            options = listOf("Model View ViewModel", "Money Victory ViewModel", "Manager Views Views Manager", "Model View ViewManager").shuffled(),
             answer = "Model View ViewModel"
         ),
         Question.BooleanChoice(
