@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CricutAndroidQuiz</string>
+    <string name="return_to_start">Return to Start</string>
+    <string name="true_answer">True</string>
+    <string name="false_answer">False</string>
+    <string name="answer">Answer</string>
+    <string name="select_all_that_apply">"(Select all that apply)"</string>
+    <string name="playing_game">Playing Game</string>
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
+    <string name="start_game">Start Game</string>
 </resources>

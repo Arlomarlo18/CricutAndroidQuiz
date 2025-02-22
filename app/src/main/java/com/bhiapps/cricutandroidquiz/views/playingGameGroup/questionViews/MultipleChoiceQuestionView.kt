@@ -11,10 +11,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bhiapps.cricutandroidquiz.R
 import com.bhiapps.cricutandroidquiz.models.objects.Question
 import com.bhiapps.cricutandroidquiz.views.subviews.AutoResizedText
 
@@ -42,7 +44,7 @@ fun MultipleChoiceQuestionView(
         )
         AutoResizedText(
             modifier = Modifier.padding(bottom = 16.dp, start = 16.dp, end = 16.dp),
-            text = "(Select all that apply)",
+            text = stringResource(R.string.select_all_that_apply),
             softWrap = true,
             style = TextStyle(
                 fontSize = 36.sp,

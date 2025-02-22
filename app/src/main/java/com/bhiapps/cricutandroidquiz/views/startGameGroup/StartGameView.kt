@@ -7,9 +7,11 @@ import androidx.compose.material3.Button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.bhiapps.cricutandroidquiz.R
 import com.bhiapps.cricutandroidquiz.models.enums.ViewState
 import com.bhiapps.cricutandroidquiz.viewModel.viewStateViewModelGroup.ViewStateViewModel
 import com.bhiapps.cricutandroidquiz.views.subviews.AutoResizedText
@@ -29,7 +31,7 @@ fun StartGameView(viewStateVM: ViewStateViewModel) {
         ) {
             AutoResizedText(
                 modifier = Modifier,
-                text = "Start Game",
+                text = stringResource(R.string.start_game),
                 softWrap = false,
                 style = TextStyle(
                     textAlign = TextAlign.Center,

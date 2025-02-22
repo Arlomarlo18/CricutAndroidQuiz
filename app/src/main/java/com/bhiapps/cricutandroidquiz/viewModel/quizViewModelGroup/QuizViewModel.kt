@@ -137,7 +137,7 @@ class QuizViewModel(
         questions = loadQuestions().shuffled()
     }
 
-    fun updateHighScore(score: Int) {
+    private fun updateHighScore(score: Int) {
         if (score > _highScore.value) {
             viewModelScope.launch(Dispatchers.IO) {
                 dataStoreManager.saveNewHighScore(score)

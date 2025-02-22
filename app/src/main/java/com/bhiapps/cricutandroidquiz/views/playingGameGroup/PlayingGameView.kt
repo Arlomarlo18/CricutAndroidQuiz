@@ -15,10 +15,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bhiapps.cricutandroidquiz.R
 import com.bhiapps.cricutandroidquiz.models.enums.ViewState
 import com.bhiapps.cricutandroidquiz.models.objects.Question
 import com.bhiapps.cricutandroidquiz.viewModel.quizViewModelGroup.QuizViewModel
@@ -55,7 +57,7 @@ fun PlayingGameView(
             item {
                 AutoResizedText(
                     modifier = Modifier.padding(16.dp),
-                    text = "Playing Game",
+                    text = stringResource(R.string.playing_game),
                     softWrap = false,
                     style = TextStyle(
                         textAlign = TextAlign.Center,
@@ -118,7 +120,9 @@ fun PlayingGameView(
                 ) {
                     AutoResizedText(
                         modifier = Modifier,
-                        text = if (questionIndex < quizVM.questions.size - 1) "Next" else "Finish",
+                        text = if (questionIndex < quizVM.questions.size - 1) stringResource(R.string.next) else stringResource(
+                            R.string.finish
+                        ),
                         softWrap = false,
                         style = TextStyle(
                             textAlign = TextAlign.Center,
@@ -185,7 +189,7 @@ fun PlayingGameView(
             ) {
                 AutoResizedText(
                     modifier = Modifier.padding(16.dp),
-                    text = "Playing Game",
+                    text = stringResource(R.string.playing_game),
                     softWrap = false,
                     style = TextStyle(
                         textAlign = TextAlign.Center,
@@ -213,7 +217,7 @@ fun PlayingGameView(
                 ) {
                     AutoResizedText(
                         modifier = Modifier,
-                        text = if (questionIndex < quizVM.questions.size - 1) "Next" else "Finish",
+                        text = if (questionIndex < quizVM.questions.size - 1) stringResource(R.string.next) else stringResource(R.string.finish),
                         softWrap = false,
                         style = TextStyle(
                             textAlign = TextAlign.Center,

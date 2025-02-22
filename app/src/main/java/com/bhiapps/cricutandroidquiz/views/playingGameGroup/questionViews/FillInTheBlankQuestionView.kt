@@ -13,10 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bhiapps.cricutandroidquiz.R
 import com.bhiapps.cricutandroidquiz.models.objects.Question
 import com.bhiapps.cricutandroidquiz.views.subviews.AutoResizedText
 
@@ -28,7 +30,9 @@ fun FillInTheBlankQuestionView(
 ) {
 
     Column(
-        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -45,7 +49,7 @@ fun FillInTheBlankQuestionView(
         OutlinedTextField(
             value = selectedAnswer,
             onValueChange = { onAnswerSelected(it)},
-            label = { AutoResizedText(text = "Answer") }
+            label = { AutoResizedText(text = stringResource(R.string.answer)) }
         )
     }
 }
