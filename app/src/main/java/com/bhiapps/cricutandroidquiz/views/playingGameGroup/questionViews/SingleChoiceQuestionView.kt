@@ -54,7 +54,7 @@ fun SingleChoiceQuestionView(
                     softWrap = true,
                     style = TextStyle(
                         fontSize = 24.sp,
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Center
                     )
                 )
             }

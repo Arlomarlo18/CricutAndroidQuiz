@@ -47,89 +47,85 @@ fun PlayingGameView(
 
 
     if (!isLandscape) {
-        Column(
+        LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
-
-            AutoResizedText(
-                modifier = Modifier.padding(16.dp),
-                text = "Playing Game",
-                softWrap = false,
-                style = TextStyle(
-                    textAlign = TextAlign.Center,
-                    fontSize = 32.sp
-                )
-            )
-
-            AutoResizedText(
-                modifier = Modifier.padding(16.dp),
-                text = currentScore.toString(),
-                softWrap = false,
-                style = TextStyle(
-                    textAlign = TextAlign.Center,
-                    fontSize = 32.sp
-                )
-            )
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            when (quizVM.questions[questionIndex]) {
-                is Question.SingleChoice -> {
-                    SingleChoiceQuestionView(
-                        quizVM.questions[questionIndex] as Question.SingleChoice,
-                        selectedAnswer = singleChoiceAnswers,
-                        onAnswerSelected = { quizVM.setSingleChoiceAnswer(it) }
-                    )
-                }
-
-                is Question.MultipleChoice -> {
-                    MultipleChoiceQuestionView(
-                        quizVM.questions[questionIndex] as Question.MultipleChoice,
-                        selectedAnswers = multipleChoiceAnswers,
-                        onAnswerSelected = { quizVM.setMultipleChoiceAnswer(it) },
-                        onAnswerRemoved = { quizVM.removeMultipleChoiceAnswer(it) }
-                    )
-                }
-
-                is Question.BooleanChoice -> {
-                    BooleanQuestionView(
-                        quizVM.questions[questionIndex] as Question.BooleanChoice,
-                        selectedAnswer = booleanAnswer,
-                        onAnswerSelected = { quizVM.setBooleanAnswer(it) }
-                    )
-                }
-
-                is Question.FillInTheBlank -> {
-                    FillInTheBlankQuestionView(
-                        quizVM.questions[questionIndex] as Question.FillInTheBlank,
-                        selectedAnswer = fillInTheBlankAnswer,
-                        onAnswerSelected = { quizVM.setFillInTheBlankAnswer(it) }
-                    )
-                }
-            }
-
-
-            Spacer(modifier = Modifier.weight(1f))
-
-            Button(
-                modifier = Modifier.padding(24.dp),
-                onClick = {
-                    quizVM.nextQuestion() {
-                        viewStateVM.setViewState(ViewState.GAME_OVER)
-                    }
-                }
-            ) {
+            item {
                 AutoResizedText(
-                    modifier = Modifier,
-                    text = if (questionIndex < quizVM.questions.size - 1) "Next" else "Finish",
+                    modifier = Modifier.padding(16.dp),
+                    text = "Playing Game",
                     softWrap = false,
                     style = TextStyle(
                         textAlign = TextAlign.Center,
                         fontSize = 32.sp
                     )
                 )
+
+                AutoResizedText(
+                    modifier = Modifier.padding(16.dp),
+                    text = currentScore.toString(),
+                    softWrap = false,
+                    style = TextStyle(
+                        textAlign = TextAlign.Center,
+                        fontSize = 32.sp
+                    )
+                )
+
+                when (quizVM.questions[questionIndex]) {
+                    is Question.SingleChoice -> {
+                        SingleChoiceQuestionView(
+                            quizVM.questions[questionIndex] as Question.SingleChoice,
+                            selectedAnswer = singleChoiceAnswers,
+                            onAnswerSelected = { quizVM.setSingleChoiceAnswer(it) }
+                        )
+                    }
+
+                    is Question.MultipleChoice -> {
+                        MultipleChoiceQuestionView(
+                            quizVM.questions[questionIndex] as Question.MultipleChoice,
+                            selectedAnswers = multipleChoiceAnswers,
+                            onAnswerSelected = { quizVM.setMultipleChoiceAnswer(it) },
+                            onAnswerRemoved = { quizVM.removeMultipleChoiceAnswer(it) }
+                        )
+                    }
+
+                    is Question.BooleanChoice -> {
+                        BooleanQuestionView(
+                            quizVM.questions[questionIndex] as Question.BooleanChoice,
+                            selectedAnswer = booleanAnswer,
+                            onAnswerSelected = { quizVM.setBooleanAnswer(it) }
+                        )
+                    }
+
+                    is Question.FillInTheBlank -> {
+                        FillInTheBlankQuestionView(
+                            quizVM.questions[questionIndex] as Question.FillInTheBlank,
+                            selectedAnswer = fillInTheBlankAnswer,
+                            onAnswerSelected = { quizVM.setFillInTheBlankAnswer(it) }
+                        )
+                    }
+                }
+
+                Button(
+                    modifier = Modifier.padding(24.dp),
+                    onClick = {
+                        quizVM.nextQuestion() {
+                            viewStateVM.setViewState(ViewState.GAME_OVER)
+                        }
+                    }
+                ) {
+                    AutoResizedText(
+                        modifier = Modifier,
+                        text = if (questionIndex < quizVM.questions.size - 1) "Next" else "Finish",
+                        softWrap = false,
+                        style = TextStyle(
+                            textAlign = TextAlign.Center,
+                            fontSize = 32.sp
+                        )
+                    )
+                }
             }
         }
     } else {

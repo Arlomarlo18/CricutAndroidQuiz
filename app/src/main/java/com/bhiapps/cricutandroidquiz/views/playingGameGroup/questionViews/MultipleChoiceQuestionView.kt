@@ -72,7 +72,7 @@ fun MultipleChoiceQuestionView(
                     softWrap = true,
                     style = TextStyle(
                         fontSize = 24.sp,
-                        textAlign = TextAlign.Start
+                        textAlign = TextAlign.Center
                     )
                 )
             }

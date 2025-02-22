@@ -63,7 +63,11 @@ fun BooleanQuestionView(
                 AutoResizedText(
                     modifier = Modifier.padding(8.dp),
                     text = "True",
-                    softWrap = false
+                    softWrap = false,
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Center
+                    )
                 )
             }
 
@@ -78,7 +82,11 @@ fun BooleanQuestionView(
                 AutoResizedText(
                     modifier = Modifier.padding(8.dp),
                     text = "False",
-                    softWrap = false
+                    softWrap = false,
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Center
+                    )
                 )
             }
         }
